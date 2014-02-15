@@ -1,5 +1,5 @@
 SCALA_VERSION := 2.10
-JAR_NAME := sparkr-assembly-0.1.jar
+JAR_NAME := sparkr-assembly-0.1.1.jar
 TARGET_NAME := target/scala-$(SCALA_VERSION)/$(JAR_NAME)
 SCALA_SOURCE_DIR := src/main/scala/edu/berkeley/cs/amplab/sparkr
 RESOURCE_DIR := src/main/resources

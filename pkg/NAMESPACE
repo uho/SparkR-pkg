@@ -1,28 +1,32 @@
-#exportPattern("^[[:alpha:]]+")
-exportClasses("RDD")
-exportClasses("Broadcast")
-exportMethods(
-              "cache",
-              "collect",
-              "collectPartition",
-              "combineByKey",
-              "count",
-              "flatMap",
-              "groupByKey",
-              "length",
-              "lapply",
-              "lapplyPartition",
-              "lapplyPartitionsWithIndex",
-              "map",
-              "partitionBy",
-              "reduce",
-              "reduceByKey",
-              "sampleRDD",
-              "take",
-              "takeSample",
-              "value"
-             )
-
-# S3 methods exported
-export("textFile", "parallelize", "hashCode", "includePackage", "broadcast", "setBroadcastValue")
-export("sparkR.init")
+export(Broadcast)
+export(RDD)
+export(broadcast)
+export(cache)
+export(collect)
+export(collectPartition)
+export(combineByKey)
+export(count)
+export(filterRRD)
+export(flatMap)
+export(groupByKey)
+export(hashCode)
+export(includePackage)
+export(lapplyPartition)
+export(lapplyPartitionsWithIndex)
+export(map)
+export(mapPartitionsWithIndex)
+export(parallelize)
+export(partitionBy)
+export(reduce)
+export(reduceByKey)
+export(sampleRDD)
+export(setBroadcastValue)
+export(sparkR.init)
+export(take)
+export(takeSample)
+export(textFile)
+export(value)
+exportClasses(Broadcast)
+exportClasses(RDD)
+exportMethods(lapply)
+exportMethods(length)

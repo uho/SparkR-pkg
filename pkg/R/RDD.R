@@ -222,6 +222,41 @@ setMethod("flatMap",
             lapplyPartition(X, partitionFunc)
           })
 
+#' filter results according to given predicate
+#'
+#' This function returs a new RDD containing only the 
+#' elements that satisfy a predicate. (We rename it due to signature 
+#' inconsistencies with the ‘filter()’ function in R's base package.)
+#'
+#' @param X The RDD to apply the transformation.
+#' @param PRED the predicate to test on each element
+#' @return a new RDD created by filtering elements.
+#' @rdname filterRRD
+#' @export
+#' @examples
+#'\dontrun{
+#' sc <- sparkR.init()
+#' rdd <- parallelize(sc, 1:10)
+#' evens <- filterRRD(rdd, function(x) { x %% 2 == 0 })
+#' collect(evens) # 2,4,6,8,10
+#'}
+setGeneric("filterRRD", function(X, PRED) {
+           standardGeneric("filterRRD") })
+
+#' @rdname filterRRD
+#' @aliases filter,PRED,function-method
+setMethod("filterRRD",
+          signature(X = "RDD", PRED = "function"),
+          function(X, PRED) {
+            partitionPred <- function(part) {
+              unlist(
+                lapply(part, function(e) { if (PRED(e)) { list(e) } else { list() }})
+              )
+            }
+            lapplyPartition(X, partitionPred)
+          })
+
+
 #' Apply a function to each partition of an RDD
 #'
 #' Return a new RDD by applying a function to each partition of this RDD.
